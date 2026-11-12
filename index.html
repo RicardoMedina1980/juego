@@ -80,15 +80,42 @@
   .drop-panel h4 { color: #ff00ff; margin-bottom: 15px; text-align: center; font-size: 1.4em; text-transform: uppercase; }
   .panel-content { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 1; }
   
+  /* 🕒 NUEVO ESTILO DEL RELOJ: Pequeño, en la esquina e inclinado */
   .timer-display {
-    position: sticky; top: 70px; z-index: 99; background: rgba(255, 0, 110, 0.15);
-    border: 3px solid #ff006e; border-radius: 20px; padding: 15px 30px; margin: 0 auto 20px auto;
-    max-width: 300px; text-align: center; box-shadow: 0 0 25px rgba(255, 0, 110, 0.4); animation: timerGlow 1s infinite alternate;
+    position: absolute; 
+    top: 15px; 
+    right: 15px; 
+    z-index: 99; 
+    background: rgba(255, 0, 110, 0.2);
+    border: 2px solid #ff006e; 
+    border-radius: 12px; 
+    padding: 8px 15px; 
+    text-align: center; 
+    box-shadow: 0 0 15px rgba(255, 0, 110, 0.4); 
+    transform: rotate(3deg); /* Inclinado sutilmente a la derecha */
+    backdrop-filter: blur(5px);
+    min-width: 80px;
   }
-  @keyframes timerGlow { from { box-shadow: 0 0 15px rgba(255, 0, 110, 0.3); } to { box-shadow: 0 0 30px rgba(255, 0, 110, 0.7); } }
-  .timer-display .timer-label { font-size: 1em; color: #ff006e; font-weight: bold; letter-spacing: 2px; }
-  .timer-display .timer-value { font-size: 3.5em; font-weight: 900; color: #ffe600; text-shadow: 0 0 15px #ffe600; line-height: 1; }
-  .timer-display.urgent .timer-value { color: #ff006e; text-shadow: 0 0 20px #ff006e; animation: timerPulse 0.5s infinite alternate; }
+  .timer-display .timer-label { 
+    font-size: 0.65em; 
+    color: #ff006e; 
+    font-weight: bold; 
+    letter-spacing: 1px; 
+    margin-bottom: 2px;
+    text-transform: uppercase;
+  }
+  .timer-display .timer-value { 
+    font-size: 2.2em; 
+    font-weight: 900; 
+    color: #ffe600; 
+    text-shadow: 0 0 10px #ffe600; 
+    line-height: 1; 
+  }
+  .timer-display.urgent .timer-value { 
+    color: #ff006e; 
+    text-shadow: 0 0 15px #ff006e; 
+    animation: timerPulse 0.5s infinite alternate; 
+  }
   @keyframes timerPulse { from { transform: scale(1); } to { transform: scale(1.15); } }
   
   .progress-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 15px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #00f3ff; }
@@ -120,7 +147,6 @@
   .selected-preview { font-size: 3.5em; margin: 15px 0; min-height: 80px; }
   .instruction-text { text-align: center; color: #ffe600; font-size: 1.1em; margin-bottom: 15px; padding: 12px; background: rgba(255,230,0,0.1); border-radius: 8px; border: 1px solid #ffe600; }
   
-  /* 🎫 CARTEL DE APROBACIÓN */
   .approval-banner {
     background: linear-gradient(135deg, rgba(255, 0, 110, 0.2), rgba(255, 230, 0, 0.2));
     border: 3px solid #ff006e;
@@ -136,91 +162,26 @@
     from { box-shadow: 0 0 20px rgba(255, 0, 110, 0.3); transform: scale(1); }
     to { box-shadow: 0 0 50px rgba(255, 0, 110, 0.7); transform: scale(1.02); }
   }
-  .approval-banner h2 {
-    color: #ff006e;
-    font-size: 2em;
-    margin-bottom: 15px;
-    text-shadow: 0 0 15px #ff006e;
-  }
-  .approval-banner p {
-    color: #ffe600;
-    font-size: 1.2em;
-    line-height: 1.6;
-  }
-  .approval-banner .waiting-icon {
-    font-size: 4em;
-    animation: spin 3s linear infinite;
-    display: inline-block;
-    margin-bottom: 15px;
-  }
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  .approval-status {
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(0,0,0,0.5);
-    border-radius: 10px;
-    border: 1px solid #ffe600;
-  }
-  .approval-status .status-text {
-    color: #00f3ff;
-    font-weight: bold;
-    font-size: 1.1em;
-  }
-  .player-list-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px;
-    background: rgba(0,0,0,0.3);
-    border-radius: 10px;
-    margin-bottom: 8px;
-    border-left: 4px solid #ff006e;
-    transition: all 0.3s;
-  }
-  .player-list-item.approved {
-    border-left-color: #00ff88;
-    background: rgba(0, 255, 136, 0.1);
-  }
-  .player-list-item .player-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex: 1;
-  }
-  .player-list-item .player-name {
-    color: #e4e4e4;
-    font-weight: bold;
-    font-size: 1.1em;
-  }
-  .player-list-item .status-badge {
-    padding: 4px 10px;
-    border-radius: 15px;
-    font-size: 0.85em;
-    font-weight: bold;
-  }
-  .status-badge.pending {
-    background: rgba(255, 0, 110, 0.3);
-    color: #ff006e;
-  }
-  .status-badge.approved {
-    background: rgba(0, 255, 136, 0.3);
-    color: #00ff88;
-  }
+  .approval-banner h2 { color: #ff006e; font-size: 2em; margin-bottom: 15px; text-shadow: 0 0 15px #ff006e; }
+  .approval-banner p { color: #ffe600; font-size: 1.2em; line-height: 1.6; }
+  .approval-banner .waiting-icon { font-size: 4em; animation: spin 3s linear infinite; display: inline-block; margin-bottom: 15px; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .approval-status { margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #ffe600; }
+  .approval-status .status-text { color: #00f3ff; font-weight: bold; font-size: 1.1em; }
   
-  .flash-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 9998; opacity: 0;
-  }
+  .player-list-item { display: flex; align-items: center; justify-content: space-between; padding: 12px; background: rgba(0,0,0,0.3); border-radius: 10px; margin-bottom: 8px; border-left: 4px solid #ff006e; transition: all 0.3s; }
+  .player-list-item.approved { border-left-color: #00ff88; background: rgba(0, 255, 136, 0.1); }
+  .player-list-item .player-info { display: flex; align-items: center; gap: 10px; flex: 1; }
+  .player-list-item .player-name { color: #e4e4e4; font-weight: bold; font-size: 1.1em; }
+  .status-badge { padding: 4px 10px; border-radius: 15px; font-size: 0.85em; font-weight: bold; }
+  .status-badge.pending { background: rgba(255, 0, 110, 0.3); color: #ff006e; }
+  .status-badge.approved { background: rgba(0, 255, 136, 0.3); color: #00ff88; }
+  
+  .flash-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; opacity: 0; }
   .flash-overlay.active { opacity: 1; animation: flashColors 0.3s infinite; }
   @keyframes flashColors {
-    0% { background: rgba(255, 0, 110, 0.7); }
-    25% { background: rgba(0, 243, 255, 0.7); }
-    50% { background: rgba(255, 230, 0, 0.7); }
-    75% { background: rgba(0, 255, 136, 0.7); }
-    100% { background: rgba(255, 0, 255, 0.7); }
+    0% { background: rgba(255, 0, 110, 0.7); } 25% { background: rgba(0, 243, 255, 0.7); }
+    50% { background: rgba(255, 230, 0, 0.7); } 75% { background: rgba(0, 255, 136, 0.7); } 100% { background: rgba(255, 0, 255, 0.7); }
   }
   
   .finale-message {
@@ -230,12 +191,15 @@
     box-shadow: 0 0 50px #ffe600;
   }
   .finale-message.active { display: block; animation: finalePop 0.5s ease; }
-  @keyframes finalePop {
-    0% { transform: translate(-50%, -50%) scale(0); }
-    100% { transform: translate(-50%, -50%) scale(1); }
-  }
+  @keyframes finalePop { 0% { transform: translate(-50%, -50%) scale(0); } 100% { transform: translate(-50%, -50%) scale(1); } }
   .finale-message h2 { font-size: 3em; color: #ffe600; text-shadow: 0 0 20px #ffe600; margin-bottom: 20px; }
   .finale-message p { font-size: 1.5em; color: #00f3ff; }
+
+  @media (max-width: 600px) {
+    .timer-display { top: 10px; right: 10px; padding: 6px 10px; transform: rotate(2deg); }
+    .timer-display .timer-value { font-size: 1.8em; }
+    h1 { font-size: 2em; }
+  }
 </style>
 </head>
 <body>
@@ -310,7 +274,6 @@
     </div>
   </div>
 
-  <!-- 🎫 NUEVA PANTALLA: ESPERANDO APROBACIÓN -->
   <div id="player-waiting-approval" class="screen">
     <div class="approval-banner">
       <div class="waiting-icon">⏳</div>
@@ -348,9 +311,12 @@
     </div>
   </div>
 
-  <div id="player-game" class="screen">
+  <!-- 🕒 Se agregó position: relative aquí para contener el reloj absoluto -->
+  <div id="player-game" class="screen" style="position: relative;">
+    
+    <!-- 🕒 Reloj compacto e inclinado en la esquina -->
     <div class="timer-display" id="timer-display">
-      <div class="timer-label">⏱️ TIEMPO RESTANTE</div>
+      <div class="timer-label">⏱️ TIEMPO</div>
       <div class="timer-value" id="player-timer">30</div>
     </div>
     
@@ -522,7 +488,6 @@ function checkJoinButton() {
 
 document.addEventListener('DOMContentLoaded', () => {
   initAvatarGrid();
-  
   const nameInput = document.getElementById('player-name');
   if (nameInput) {
     nameInput.addEventListener('input', checkJoinButton);
@@ -533,7 +498,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-  
   const adminPasswordInput = document.getElementById('admin-password');
   if (adminPasswordInput) {
     adminPasswordInput.addEventListener('keypress', (e) => {
@@ -564,71 +528,52 @@ function initAudio() {
 
 function playRetroSound(type) {
   if (!audioCtx) return;
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-  osc.connect(gain); gain.connect(audioCtx.destination);
   const now = audioCtx.currentTime;
   if (type === 'coin') {
+    const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+    osc.connect(gain); gain.connect(audioCtx.destination);
     osc.type = 'square'; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1);
     gain.gain.setValueAtTime(0.1, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
     osc.start(now); osc.stop(now + 0.3);
   } else if (type === 'error') {
+    const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+    osc.connect(gain); gain.connect(audioCtx.destination);
     osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now); osc.frequency.linearRampToValueAtTime(80, now + 0.3);
     gain.gain.setValueAtTime(0.15, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
     osc.start(now); osc.stop(now + 0.3);
   } else if (type === 'win') {
+    const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+    osc.connect(gain); gain.connect(audioCtx.destination);
     osc.type = 'square'; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.15);
     osc.frequency.setValueAtTime(783.99, now + 0.3); osc.frequency.setValueAtTime(1046.50, now + 0.45);
     gain.gain.setValueAtTime(0.15, now); gain.gain.linearRampToValueAtTime(0, now + 1.5);
     osc.start(now); osc.stop(now + 1.5);
   } else if (type === 'click') {
+    const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+    osc.connect(gain); gain.connect(audioCtx.destination);
     osc.type = 'sine'; osc.frequency.setValueAtTime(800, now);
     gain.gain.setValueAtTime(0.05, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
     osc.start(now); osc.stop(now + 0.1);
   } else if (type === 'victory') {
-    const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
-    notes.forEach((freq, i) => {
-      const o = audioCtx.createOscillator();
-      const g = audioCtx.createGain();
-      o.connect(g); g.connect(audioCtx.destination);
-      o.type = 'square';
-      o.frequency.value = freq;
-      g.gain.setValueAtTime(0.2, now + i * 0.15);
-      g.gain.exponentialRampToValueAtTime(0.01, now + i * 0.15 + 0.5);
-      o.start(now + i * 0.15);
-      o.stop(now + i * 0.15 + 0.5);
+    [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98].forEach((freq, i) => {
+      const o = audioCtx.createOscillator(); const g = audioCtx.createGain();
+      o.connect(g); g.connect(audioCtx.destination); o.type = 'square'; o.frequency.value = freq;
+      g.gain.setValueAtTime(0.2, now + i * 0.15); g.gain.exponentialRampToValueAtTime(0.01, now + i * 0.15 + 0.5);
+      o.start(now + i * 0.15); o.stop(now + i * 0.15 + 0.5);
     });
   } else if (type === 'finale') {
-    const boom = audioCtx.createOscillator();
-    const boomGain = audioCtx.createGain();
-    boom.connect(boomGain); boomGain.connect(audioCtx.destination);
-    boom.type = 'sawtooth';
-    boom.frequency.setValueAtTime(80, now);
-    boom.frequency.exponentialRampToValueAtTime(30, now + 1.5);
-    boomGain.gain.setValueAtTime(0.4, now);
-    boomGain.gain.exponentialRampToValueAtTime(0.01, now + 1.5);
+    const boom = audioCtx.createOscillator(); const boomGain = audioCtx.createGain();
+    boom.connect(boomGain); boomGain.connect(audioCtx.destination); boom.type = 'sawtooth';
+    boom.frequency.setValueAtTime(80, now); boom.frequency.exponentialRampToValueAtTime(30, now + 1.5);
+    boomGain.gain.setValueAtTime(0.4, now); boomGain.gain.exponentialRampToValueAtTime(0.01, now + 1.5);
     boom.start(now); boom.stop(now + 1.5);
-    
     for (let i = 0; i < 5; i++) {
-      const crash = audioCtx.createOscillator();
-      const crashGain = audioCtx.createGain();
-      crash.connect(crashGain); crashGain.connect(audioCtx.destination);
-      crash.type = 'square';
+      const crash = audioCtx.createOscillator(); const crashGain = audioCtx.createGain();
+      crash.connect(crashGain); crashGain.connect(audioCtx.destination); crash.type = 'square';
       crash.frequency.value = 2000 + Math.random() * 3000;
-      crashGain.gain.setValueAtTime(0.15, now + i * 0.1);
-      crashGain.gain.exponentialRampToValueAtTime(0.01, now + i * 0.1 + 0.3);
+      crashGain.gain.setValueAtTime(0.15, now + i * 0.1); crashGain.gain.exponentialRampToValueAtTime(0.01, now + i * 0.1 + 0.3);
       crash.start(now + i * 0.1); crash.stop(now + i * 0.1 + 0.3);
     }
-    
-    const rumble = audioCtx.createOscillator();
-    const rumbleGain = audioCtx.createGain();
-    rumble.connect(rumbleGain); rumbleGain.connect(audioCtx.destination);
-    rumble.type = 'sawtooth';
-    rumble.frequency.setValueAtTime(60, now + 1);
-    rumble.frequency.linearRampToValueAtTime(40, now + 2.5);
-    rumbleGain.gain.setValueAtTime(0.3, now + 1);
-    rumbleGain.gain.exponentialRampToValueAtTime(0.01, now + 2.5);
-    rumble.start(now + 1); rumble.stop(now + 2.5);
   }
 }
 
@@ -698,7 +643,6 @@ function showScreen(id) {
   initAudio(); playRetroSound('click');
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  
   if (id === 'host-setup') {
     setTimeout(() => {
       const adminInput = document.getElementById('admin-password');
@@ -707,24 +651,18 @@ function showScreen(id) {
   }
 }
 
-// 🎫 ADMIN: Inicia sesión y ve lista de jugadores pendientes
 function startHost() {
   myRole = 'host';
   finaleTriggered = false;
   document.getElementById('scoreBar').style.display = 'flex';
   db.ref(`games/${gameId}`).set({ state: 'waiting' });
   showScreen('host-lobby');
-  
-  // Escucha cambios en jugadores en tiempo real
   db.ref(`games/${gameId}/players`).on('value', (snapshot) => {
     const players = snapshot.val() || {};
     const playerArray = Object.values(players);
     const totalPlayers = playerArray.length;
     const approvedPlayers = playerArray.filter(p => p.approved).length;
-    
     document.getElementById('host-player-count').innerText = totalPlayers;
-    
-    // Habilita/deshabilita botón de inicio según jugadores aprobados
     const btnStart = document.getElementById('btn-start-game');
     if (approvedPlayers > 0) {
       btnStart.disabled = false;
@@ -735,64 +673,41 @@ function startHost() {
       btnStart.style.opacity = '0.5';
       btnStart.innerText = '▶️ INICIAR COMPETENCIA (Aprobá al menos 1 jugador)';
     }
-    
-    // Renderiza lista con botones de aprobar/rechazar
     const listHtml = playerArray.map(p => {
       const isApproved = p.approved ? true : false;
-      const statusBadge = isApproved 
-        ? '<span class="status-badge approved">✅ APROBADO</span>'
-        : '<span class="status-badge pending">⏳ PENDIENTE</span>';
-      const approveBtn = isApproved 
-        ? '' 
-        : `<button class="btn approve" onclick="approvePlayer('${p.playerId}')">✅ Aprobar</button>`;
+      const statusBadge = isApproved ? '<span class="status-badge approved">✅ APROBADO</span>' : '<span class="status-badge pending">⏳ PENDIENTE</span>';
+      const approveBtn = isApproved ? '' : `<button class="btn approve" onclick="approvePlayer('${p.playerId}')">✅ Aprobar</button>`;
       const rejectBtn = `<button class="btn" style="background:linear-gradient(135deg,#ff006e,#ff4d6d);padding:8px 16px;font-size:0.9em;margin-left:5px;" onclick="rejectPlayer('${p.playerId}')">❌ Rechazar</button>`;
-      
-      return `
-        <div class="player-list-item ${isApproved ? 'approved' : ''}">
-          <div class="player-info">
-            <span class="avatar-display">${p.avatar}</span>
-            <span class="player-name">${p.name}</span>
-            ${statusBadge}
-          </div>
-          <div>
-            ${approveBtn}
-            ${!isApproved ? rejectBtn : ''}
-          </div>
-        </div>
-      `;
+      return `<div class="player-list-item ${isApproved ? 'approved' : ''}">
+        <div class="player-info"><span class="avatar-display">${p.avatar}</span><span class="player-name">${p.name}</span>${statusBadge}</div>
+        <div>${approveBtn}${!isApproved ? rejectBtn : ''}</div>
+      </div>`;
     }).join('');
-    
     document.getElementById('host-player-list').innerHTML = listHtml || '<p style="color:#8b92b5; text-align:center;">Esperando jugadores...</p>';
   });
 }
 
-// 🎫 ADMIN: Aprueba un jugador
 function approvePlayer(playerId) {
   db.ref(`games/${gameId}/players/${playerId}/approved`).set(true);
   playRetroSound('coin');
 }
 
-// 🎫 ADMIN: Rechaza un jugador
 function rejectPlayer(playerId) {
   db.ref(`games/${gameId}/players/${playerId}/approved`).set(false);
   db.ref(`games/${gameId}/players/${playerId}/rejected`).set(true);
   playRetroSound('error');
 }
 
-// 🎫 ADMIN: Inicia el juego (solo jugadores aprobados juegan)
 function hostStartGame() {
   playRetroSound('win');
   db.ref(`games/${gameId}`).update({ state: 'playing' });
   showScreen('host-game');
-  
   db.ref(`games/${gameId}/players`).on('value', (snapshot) => {
     const players = snapshot.val() || {};
     const playerArray = Object.values(players);
     const totalPlayers = playerArray.length;
     const finishedPlayers = playerArray.filter(p => p.finished).length;
-    
     const sorted = [...playerArray].sort((a, b) => (b.score || 0) - (a.score || 0));
-    
     document.getElementById('host-stats').innerHTML = `
       <div style="margin-bottom:15px; padding:10px; background:rgba(0,0,0,0.3); border-radius:8px; border:1px solid #00f3ff;">
         <span style="color:#00f3ff;">👥 Jugadores: ${totalPlayers}</span> | 
@@ -801,89 +716,59 @@ function hostStartGame() {
     ` + sorted.map((p, i) => {
       const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '👾';
       const progress = p.currentQ !== undefined ? Math.min(((p.currentQ || 0) / questions.length) * 100, 100) : 0;
-      return `
-        <div style="padding:12px; margin-bottom:8px; background:rgba(0,0,0,0.3); border-radius:8px; display:flex; align-items:center; gap:10px;">
-          <span style="font-size:1.5em;">${medal}</span>
-          <span class="avatar-display">${p.avatar}</span>
-          <div style="flex:1;">
-            <div style="color:#00f3ff; font-weight:bold;">${p.name} ${p.finished ? '<span style="color:#00ff88;">✅</span>' : ''}</div>
-            <div style="height:4px; background:rgba(255,255,255,0.1); border-radius:2px; margin-top:4px; overflow:hidden;">
-              <div style="height:100%; width:${progress}%; background:linear-gradient(90deg, #00f3ff, #00ff88); transition: width 0.5s;"></div>
-            </div>
+      return `<div style="padding:12px; margin-bottom:8px; background:rgba(0,0,0,0.3); border-radius:8px; display:flex; align-items:center; gap:10px;">
+        <span style="font-size:1.5em;">${medal}</span><span class="avatar-display">${p.avatar}</span>
+        <div style="flex:1;">
+          <div style="color:#00f3ff; font-weight:bold;">${p.name} ${p.finished ? '<span style="color:#00ff88;">✅</span>' : ''}</div>
+          <div style="height:4px; background:rgba(255,255,255,0.1); border-radius:2px; margin-top:4px; overflow:hidden;">
+            <div style="height:100%; width:${progress}%; background:linear-gradient(90deg, #00f3ff, #00ff88); transition: width 0.5s;"></div>
           </div>
-          <span style="color:#ffe600; font-weight:bold; font-size:1.2em;">${p.score || 0} pts</span>
         </div>
-      `;
+        <span style="color:#ffe600; font-weight:bold; font-size:1.2em;">${p.score || 0} pts</span>
+      </div>`;
     }).join('');
-    
     if (totalPlayers > 0 && finishedPlayers === totalPlayers && !finaleTriggered) {
       triggerGameFinale();
     }
   });
 }
 
-// 🎫 JUGADOR: Envía solicitud de ingreso (queda pendiente de aprobación)
 function joinGame() {
   initAudio();
   myName = document.getElementById('player-name').value.trim().toUpperCase();
   if (!myName) return alert("⚠️ INGRESÁ TU NICKNAME");
-  
   myAvatar = avatars[selectedAvatarIndex];
   myRole = 'player';
   document.getElementById('scoreBar').style.display = 'flex';
   playMusic(); 
-  
-  // Registra al jugador con approved: false (pendiente)
   db.ref(`games/${gameId}/players/${myPlayerId}`).set({ 
-    name: myName, 
-    avatar: myAvatar, 
-    score: 0, 
-    currentQ: 0, 
-    finished: false, 
-    approved: false,  // ⚠️ Pendiente de aprobación
-    rejected: false,
-    joinedAt: Date.now(),
-    playerId: myPlayerId
+    name: myName, avatar: myAvatar, score: 0, currentQ: 0, finished: false, 
+    approved: false, rejected: false, joinedAt: Date.now(), playerId: myPlayerId
   });
   playRetroSound('coin');
-  
-  // Muestra cartel de espera de aprobación
   document.getElementById('waiting-player-name').innerText = myName;
   showScreen('player-waiting-approval');
   
-  // Escucha si fue aprobado o rechazado
   db.ref(`games/${gameId}/players/${myPlayerId}`).on('value', (snapshot) => {
     const playerData = snapshot.val();
     if (!playerData) return;
-    
-    if (playerData.rejected === true) {
-      // Rechazado por el admin
-      showScreen('player-rejected');
-      return;
-    }
-    
+    if (playerData.rejected === true) { showScreen('player-rejected'); return; }
     if (playerData.approved === true) {
-      // Aprobado - actualiza el cartel
       document.getElementById('approval-status-text').innerText = '✅ APROBADO - ESPERANDO INICIO';
       document.getElementById('approval-status-text').style.color = '#00ff88';
     }
   });
   
-  // Escucha el estado del juego (solo si está aprobado)
   db.ref(`games/${gameId}/state`).on('value', (snapshot) => {
     const state = snapshot.val();
     const playerData = db.ref(`games/${gameId}/players/${myPlayerId}`);
-    
     playerData.once('value', (pSnap) => {
       const pData = pSnap.val();
       if (!pData) return;
-      
       if (state === 'playing' && pData.approved === true) {
-        // Solo los aprobados entran al juego
         showScreen('player-game');
         startMyGame();
       } else if (state === 'playing' && pData.approved !== true) {
-        // No aprobado y el juego empezó
         showScreen('player-rejected');
       } else if (state === 'finished') {
         showScreen('end-screen');
@@ -914,7 +799,10 @@ function resetTimer() {
   const timerEl = document.getElementById('player-timer');
   const timerDisplay = document.getElementById('timer-display');
   if (timerEl) timerEl.innerText = timeLeft;
-  if (timerDisplay) timerDisplay.classList.remove('urgent');
+  if (timerDisplay) {
+    timerDisplay.classList.remove('urgent');
+    timerDisplay.style.display = 'block';
+  }
 }
 
 function loadQuestion(qIndex) {
@@ -922,14 +810,11 @@ function loadQuestion(qIndex) {
     finishMyGame();
     return;
   }
-  
   resetTimer();
   currentPanelIndex = 0;
   attemptsInPanel = 0;
-  
   document.getElementById('question-counter').innerText = qIndex + 1;
   document.getElementById('player-question-text').innerText = questions[qIndex].q;
-  
   loadPanel();
   
   timerInterval = setInterval(() => {
@@ -937,21 +822,15 @@ function loadQuestion(qIndex) {
     const timerEl = document.getElementById('player-timer');
     const timerDisplay = document.getElementById('timer-display');
     if (timerEl) timerEl.innerText = timeLeft;
-    
-    if (timeLeft <= 10 && timerDisplay) {
-      timerDisplay.classList.add('urgent');
-    }
+    if (timeLeft <= 10 && timerDisplay) timerDisplay.classList.add('urgent');
     
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
       timerInterval = null;
-      
       myScore = Math.max(0, myScore - 40);
       db.ref(`games/${gameId}/players/${myPlayerId}/score`).set(myScore);
-      
       showMessage('⏰ ¡TIEMPO AGOTADO! -40 PTS', 'error');
       playRetroSound('error');
-      
       setTimeout(() => {
         currentQIndex++;
         db.ref(`games/${gameId}/players/${myPlayerId}/currentQ`).set(currentQIndex);
@@ -964,13 +843,10 @@ function loadQuestion(qIndex) {
 function loadPanel() {
   const q = questions[currentQIndex];
   const panel = q.panels[currentPanelIndex];
-  
   document.getElementById('panel-title').innerText = panel.title;
   document.getElementById('panel-counter').innerText = currentPanelIndex + 1;
-  
   const cardsContainer = document.getElementById('cards-container');
   cardsContainer.innerHTML = '';
-  
   const shuffledOptions = [...panel.options].sort(() => Math.random() - 0.5);
   shuffledOptions.forEach(opt => {
     const cardEl = document.createElement('div');
@@ -979,7 +855,6 @@ function loadPanel() {
     makeDraggable(cardEl, opt.correct);
     cardsContainer.appendChild(cardEl);
   });
-  
   const activePanel = document.getElementById('active-panel');
   activePanel.className = 'drop-panel';
   activePanel.querySelector('.panel-content').innerHTML = '';
@@ -987,62 +862,40 @@ function loadPanel() {
 
 function makeDraggable(el, isCorrect) {
   let startX, startY, isDragging = false;
-
   const startDrag = (e) => {
     if (el.classList.contains('placed')) return;
     isDragging = true;
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    
     const rect = el.getBoundingClientRect();
-    startX = clientX;
-    startY = clientY;
-    
-    el.style.position = 'fixed';
-    el.style.left = rect.left + 'px';
-    el.style.top = rect.top + 'px';
-    el.style.width = rect.width + 'px';
-    el.style.zIndex = 1000;
-    el.classList.add('dragging');
+    startX = clientX; startY = clientY;
+    el.style.position = 'fixed'; el.style.left = rect.left + 'px'; el.style.top = rect.top + 'px';
+    el.style.width = rect.width + 'px'; el.style.zIndex = 1000; el.classList.add('dragging');
     if (e.cancelable) e.preventDefault();
   };
-
   const moveDrag = (e) => {
     if (!isDragging) return;
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    const dx = clientX - startX;
-    const dy = clientY - startY;
-    el.style.transform = `translate(${dx}px, ${dy}px)`;
+    el.style.transform = `translate(${clientX - startX}px, ${clientY - startY}px)`;
     if (e.cancelable) e.preventDefault();
   };
-
   const endDrag = (e) => {
     if (!isDragging) return;
     isDragging = false;
-    
     const clientX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
     const clientY = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
-    
     el.style.display = 'none';
     const elemBelow = document.elementFromPoint(clientX, clientY);
     el.style.display = '';
-    
     const dropZone = elemBelow ? elemBelow.closest('#active-panel') : null;
-    
     if (dropZone) {
       processAnswer(dropZone, isCorrect, el);
     } else {
-      el.style.position = '';
-      el.style.left = '';
-      el.style.top = '';
-      el.style.width = '';
-      el.style.transform = '';
-      el.style.zIndex = '';
-      el.classList.remove('dragging');
+      el.style.position = ''; el.style.left = ''; el.style.top = ''; el.style.width = '';
+      el.style.transform = ''; el.style.zIndex = ''; el.classList.remove('dragging');
     }
   };
-
   el.addEventListener('mousedown', startDrag);
   el.addEventListener('touchstart', startDrag, {passive: false});
   window.addEventListener('mousemove', moveDrag);
@@ -1081,31 +934,30 @@ function processAnswer(dropZone, isCorrect, draggedEl) {
     currentPanelIndex++;
     attemptsInPanel = 0;
     
+    // 🕒 REINICIO INMEDIATO DEL TIMER AL ACERTAR
+    resetTimer();
+    
     if (currentPanelIndex >= 3) {
       setTimeout(() => {
         currentQIndex++;
         db.ref(`games/${gameId}/players/${myPlayerId}/currentQ`).set(currentQIndex);
         loadQuestion(currentQIndex);
-      }, 1500);
+      }, 1000);
     } else {
-      setTimeout(() => loadPanel(), 1200);
+      setTimeout(() => {
+        resetTimer(); // Reinicia para el siguiente panel de la misma pregunta
+        loadPanel();
+      }, 800);
     }
   } else {
     attemptsInPanel++;
     dropZone.classList.add('wrong');
     playRetroSound('error');
-    
     let penalty = attemptsInPanel === 1 ? 10 : 30;
     showMessage(`💥 ¡INCORRECTO! -${penalty} pts`, 'error');
-    
     setTimeout(() => dropZone.classList.remove('wrong'), 500);
-    
-    draggedEl.style.position = '';
-    draggedEl.style.left = '';
-    draggedEl.style.top = '';
-    draggedEl.style.width = '';
-    draggedEl.style.transform = '';
-    draggedEl.style.zIndex = '';
+    draggedEl.style.position = ''; draggedEl.style.left = ''; draggedEl.style.top = '';
+    draggedEl.style.width = ''; draggedEl.style.transform = ''; draggedEl.style.zIndex = '';
     draggedEl.classList.remove('dragging');
   }
 }
@@ -1117,13 +969,9 @@ function finishMyGame() {
     clearInterval(timerInterval);
     timerInterval = null;
   }
-  
   db.ref(`games/${gameId}/players/${myPlayerId}`).update({ 
-    finished: true, 
-    finalScore: myScore,
-    finishedAt: Date.now()
+    finished: true, finalScore: myScore, finishedAt: Date.now()
   });
-  
   stopMusic();
   showScreen('end-screen');
   document.getElementById('final-score-text').innerText = `🎉 ¡TERMINASTE! PUNTAJE FINAL: ${myScore} PTS`;
@@ -1152,7 +1000,10 @@ function loadLeaderboard() {
       else if (i === 2) badge = '<span class="rank-badge" style="background:#cd7f32; color:#000;">🥉 3°</span>';
       const isMe = p.name === myName;
       const finishedTag = p.finished ? '<span style="color:#00ff88; font-size:0.8em;">✅</span>' : '';
-      return `<div class="rank-row" style="${isMe ? 'border: 2px solid #00f3ff; box-shadow: 0 0 15px rgba(0,243,255,0.5);' : ''}"><span class="rank-name"><span class="avatar-display">${p.avatar}</span> ${i + 1}. ${p.name} ${badge} ${finishedTag}</span><span class="rank-score">${p.score || 0} PTS</span></div>`;
+      return `<div class="rank-row" style="${isMe ? 'border: 2px solid #00f3ff; box-shadow: 0 0 15px rgba(0,243,255,0.5);' : ''}">
+        <span class="rank-name"><span class="avatar-display">${p.avatar}</span> ${i + 1}. ${p.name} ${badge} ${finishedTag}</span>
+        <span class="rank-score">${p.score || 0} PTS</span>
+      </div>`;
     }).join('');
   });
 }
