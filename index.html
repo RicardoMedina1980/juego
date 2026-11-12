@@ -49,7 +49,6 @@
   .question-box { background: rgba(255, 0, 255, 0.1); border: 2px solid #ff00ff; border-radius: 15px; padding: 25px; margin-bottom: 30px; font-size: 1.6em; text-align: center; min-height: 100px; display: flex; align-items: center; justify-content: center; color: #ffe600; font-weight: bold; box-shadow: 0 0 20px rgba(255, 0, 255, 0.2); line-height: 1.3; }
   
   .game-area { display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px; }
-  
   .cards-pool { background: rgba(0,0,0,0.3); border: 2px dashed #00f3ff; border-radius: 15px; padding: 20px; min-height: 200px; display: flex; flex-direction: column; gap: 15px; align-items: center; }
   
   .draggable-card { 
@@ -72,50 +71,22 @@
     animation: glow 2s infinite alternate;
   }
   @keyframes glow { from { box-shadow: 0 0 10px rgba(255, 230, 0, 0.2); } to { box-shadow: 0 0 25px rgba(255, 230, 0, 0.5); } }
-  
   .drop-panel.correct { border-color: #00ff88; background: rgba(0, 255, 136, 0.15); border-style: solid; box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); animation: none; }
   .drop-panel.wrong { border-color: #ff006e; background: rgba(255, 0, 110, 0.15); animation: shake 0.5s; }
   @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
-  
   .drop-panel h4 { color: #ff00ff; margin-bottom: 15px; text-align: center; font-size: 1.4em; text-transform: uppercase; }
   .panel-content { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 1; }
   
-  /* 🕒 NUEVO ESTILO DEL RELOJ: Pequeño, en la esquina e inclinado */
+  /* 🕒 RELOJ COMPACTO E INCLINADO */
   .timer-display {
-    position: absolute; 
-    top: 15px; 
-    right: 15px; 
-    z-index: 99; 
-    background: rgba(255, 0, 110, 0.2);
-    border: 2px solid #ff006e; 
-    border-radius: 12px; 
-    padding: 8px 15px; 
-    text-align: center; 
-    box-shadow: 0 0 15px rgba(255, 0, 110, 0.4); 
-    transform: rotate(3deg); /* Inclinado sutilmente a la derecha */
-    backdrop-filter: blur(5px);
-    min-width: 80px;
+    position: absolute; top: 15px; right: 15px; z-index: 99; 
+    background: rgba(255, 0, 110, 0.2); border: 2px solid #ff006e; border-radius: 12px; 
+    padding: 8px 15px; text-align: center; box-shadow: 0 0 15px rgba(255, 0, 110, 0.4); 
+    transform: rotate(3deg); backdrop-filter: blur(5px); min-width: 80px;
   }
-  .timer-display .timer-label { 
-    font-size: 0.65em; 
-    color: #ff006e; 
-    font-weight: bold; 
-    letter-spacing: 1px; 
-    margin-bottom: 2px;
-    text-transform: uppercase;
-  }
-  .timer-display .timer-value { 
-    font-size: 2.2em; 
-    font-weight: 900; 
-    color: #ffe600; 
-    text-shadow: 0 0 10px #ffe600; 
-    line-height: 1; 
-  }
-  .timer-display.urgent .timer-value { 
-    color: #ff006e; 
-    text-shadow: 0 0 15px #ff006e; 
-    animation: timerPulse 0.5s infinite alternate; 
-  }
+  .timer-display .timer-label { font-size: 0.65em; color: #ff006e; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px; text-transform: uppercase; }
+  .timer-display .timer-value { font-size: 2.2em; font-weight: 900; color: #ffe600; text-shadow: 0 0 10px #ffe600; line-height: 1; }
+  .timer-display.urgent .timer-value { color: #ff006e; text-shadow: 0 0 15px #ff006e; animation: timerPulse 0.5s infinite alternate; }
   @keyframes timerPulse { from { transform: scale(1); } to { transform: scale(1.15); } }
   
   .progress-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 15px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #00f3ff; }
@@ -149,19 +120,10 @@
   
   .approval-banner {
     background: linear-gradient(135deg, rgba(255, 0, 110, 0.2), rgba(255, 230, 0, 0.2));
-    border: 3px solid #ff006e;
-    border-radius: 20px;
-    padding: 30px;
-    margin: 30px auto;
-    max-width: 500px;
-    text-align: center;
-    box-shadow: 0 0 40px rgba(255, 0, 110, 0.4);
-    animation: approvalPulse 2s infinite alternate;
+    border: 3px solid #ff006e; border-radius: 20px; padding: 30px; margin: 30px auto; max-width: 500px; text-align: center;
+    box-shadow: 0 0 40px rgba(255, 0, 110, 0.4); animation: approvalPulse 2s infinite alternate;
   }
-  @keyframes approvalPulse {
-    from { box-shadow: 0 0 20px rgba(255, 0, 110, 0.3); transform: scale(1); }
-    to { box-shadow: 0 0 50px rgba(255, 0, 110, 0.7); transform: scale(1.02); }
-  }
+  @keyframes approvalPulse { from { box-shadow: 0 0 20px rgba(255, 0, 110, 0.3); transform: scale(1); } to { box-shadow: 0 0 50px rgba(255, 0, 110, 0.7); transform: scale(1.02); } }
   .approval-banner h2 { color: #ff006e; font-size: 2em; margin-bottom: 15px; text-shadow: 0 0 15px #ff006e; }
   .approval-banner p { color: #ffe600; font-size: 1.2em; line-height: 1.6; }
   .approval-banner .waiting-icon { font-size: 4em; animation: spin 3s linear infinite; display: inline-block; margin-bottom: 15px; }
@@ -179,17 +141,9 @@
   
   .flash-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; opacity: 0; }
   .flash-overlay.active { opacity: 1; animation: flashColors 0.3s infinite; }
-  @keyframes flashColors {
-    0% { background: rgba(255, 0, 110, 0.7); } 25% { background: rgba(0, 243, 255, 0.7); }
-    50% { background: rgba(255, 230, 0, 0.7); } 75% { background: rgba(0, 255, 136, 0.7); } 100% { background: rgba(255, 0, 255, 0.7); }
-  }
+  @keyframes flashColors { 0% { background: rgba(255, 0, 110, 0.7); } 25% { background: rgba(0, 243, 255, 0.7); } 50% { background: rgba(255, 230, 0, 0.7); } 75% { background: rgba(0, 255, 136, 0.7); } 100% { background: rgba(255, 0, 255, 0.7); } }
   
-  .finale-message {
-    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.95); border: 4px solid #ffe600; border-radius: 20px;
-    padding: 40px; text-align: center; z-index: 10000; display: none;
-    box-shadow: 0 0 50px #ffe600;
-  }
+  .finale-message { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.95); border: 4px solid #ffe600; border-radius: 20px; padding: 40px; text-align: center; z-index: 10000; display: none; box-shadow: 0 0 50px #ffe600; }
   .finale-message.active { display: block; animation: finalePop 0.5s ease; }
   @keyframes finalePop { 0% { transform: translate(-50%, -50%) scale(0); } 100% { transform: translate(-50%, -50%) scale(1); } }
   .finale-message h2 { font-size: 3em; color: #ffe600; text-shadow: 0 0 20px #ffe600; margin-bottom: 20px; }
@@ -311,10 +265,7 @@
     </div>
   </div>
 
-  <!-- 🕒 Se agregó position: relative aquí para contener el reloj absoluto -->
   <div id="player-game" class="screen" style="position: relative;">
-    
-    <!-- 🕒 Reloj compacto e inclinado en la esquina -->
     <div class="timer-display" id="timer-display">
       <div class="timer-label">⏱️ TIEMPO</div>
       <div class="timer-value" id="player-timer">30</div>
@@ -326,7 +277,6 @@
     </div>
     
     <div class="question-box" id="player-question-text">CARGANDO...</div>
-    
     <div class="instruction-text">👆 Arrastrá la respuesta correcta al panel brillante</div>
     <div class="game-area">
       <div class="cards-pool" id="cards-container"></div>
@@ -790,7 +740,8 @@ function startMyGame() {
   loadQuestion(currentQIndex);
 }
 
-function resetTimer() {
+// 🕒 FUNCIÓN UNIFICADA: Limpia y REINICIA el timer siempre
+function resetAndStartTimer() {
   if (timerInterval !== null) {
     clearInterval(timerInterval);
     timerInterval = null;
@@ -803,26 +754,13 @@ function resetTimer() {
     timerDisplay.classList.remove('urgent');
     timerDisplay.style.display = 'block';
   }
-}
-
-function loadQuestion(qIndex) {
-  if (qIndex >= questions.length) {
-    finishMyGame();
-    return;
-  }
-  resetTimer();
-  currentPanelIndex = 0;
-  attemptsInPanel = 0;
-  document.getElementById('question-counter').innerText = qIndex + 1;
-  document.getElementById('player-question-text').innerText = questions[qIndex].q;
-  loadPanel();
   
   timerInterval = setInterval(() => {
     timeLeft--;
-    const timerEl = document.getElementById('player-timer');
-    const timerDisplay = document.getElementById('timer-display');
-    if (timerEl) timerEl.innerText = timeLeft;
-    if (timeLeft <= 10 && timerDisplay) timerDisplay.classList.add('urgent');
+    const tEl = document.getElementById('player-timer');
+    const tDisplay = document.getElementById('timer-display');
+    if (tEl) tEl.innerText = timeLeft;
+    if (timeLeft <= 10 && tDisplay) tDisplay.classList.add('urgent');
     
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
@@ -838,6 +776,21 @@ function loadQuestion(qIndex) {
       }, 2000);
     }
   }, 1000);
+}
+
+function loadQuestion(qIndex) {
+  if (qIndex >= questions.length) {
+    finishMyGame();
+    return;
+  }
+  currentPanelIndex = 0;
+  attemptsInPanel = 0;
+  document.getElementById('question-counter').innerText = qIndex + 1;
+  document.getElementById('player-question-text').innerText = questions[qIndex].q;
+  loadPanel();
+  
+  // 🕒 Iniciar el timer al cargar la pregunta
+  resetAndStartTimer();
 }
 
 function loadPanel() {
@@ -934,18 +887,15 @@ function processAnswer(dropZone, isCorrect, draggedEl) {
     currentPanelIndex++;
     attemptsInPanel = 0;
     
-    // 🕒 REINICIO INMEDIATO DEL TIMER AL ACERTAR
-    resetTimer();
-    
     if (currentPanelIndex >= 3) {
       setTimeout(() => {
         currentQIndex++;
         db.ref(`games/${gameId}/players/${myPlayerId}/currentQ`).set(currentQIndex);
-        loadQuestion(currentQIndex);
+        loadQuestion(currentQIndex); // Esto llama a resetAndStartTimer()
       }, 1000);
     } else {
       setTimeout(() => {
-        resetTimer(); // Reinicia para el siguiente panel de la misma pregunta
+        resetAndStartTimer(); // 🕒 REINICIA EL TIMER PARA EL SIGUIENTE PANEL
         loadPanel();
       }, 800);
     }
@@ -1010,4 +960,3 @@ function loadLeaderboard() {
 </script>
 </body>
 </html>
-
